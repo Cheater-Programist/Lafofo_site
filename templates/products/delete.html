@@ -1,0 +1,11 @@
+{% extends 'gallery.html' %}
+{% block title %}категории{% endblock %}
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <h1>Вы точно хотите удалить этот продукт- <span class="badge bg-secondary">{{ product.title }}?</span></h1>
+            <button style="background: black;" type="submit" class="btn btn-success mt-3">Удалить</button>
+        </form>
+    </div>
+{% endblock %}

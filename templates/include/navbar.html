@@ -1,0 +1,94 @@
+{% load static i18n %}
+{% load socialaccount %}
+<!-- Start Main Top -->
+<div class="main-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                    {% if user.is_authenticated %}
+                        <p style="color: white;">Добро пожаловать, {{ user.username }} !</p>
+<!--                        <img src="{{ user.profile }}"-->
+<!--                             alt="" style="width: 40px;border-radius: 100%;">-->
+                        <a style="">{{ user.profile }}</a>
+                        <div>
+                            <a style="background: black; color: white;" href="{% url 'account_logout' %}" class="btn btn-danger">Выйти</a>
+                        </div>
+                    {% else %}
+
+                        <a style="background: black;" class="btn btn-success" href="{% url 'account_login' %}"> Вход </a>
+                        <a style="background: black;" class="btn btn-success" href="{% url 'account_signup' %}"> Регистрация </a>
+                    {% endif %}
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main Top -->
+
+<!-- Start Main Top -->
+<header class="main-header">
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+        <div class="container">
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button style="background: black; color: white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{% url 'index_product' %}"><img src="{% static 'images/lafofo.jpg' %}" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="nav-item active"><a  style="color: black;" class="nav-link" href="{% url 'index_product' %}">Домой</a></li>
+                    <li class="nav-item"><a style="color: black;" class="nav-link" href="{% url 'create_product' %}">Добавить продукт</a></li>
+
+                    <li class="nav-item"><a style="color: black;" class="nav-link" href="{% url 'index_category' %}">Категории</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a style="color: black;" href="#"><i class="fa fa-search"></i></a></li>
+                    <li>
+                <div class="basket-container">
+                    <a href="">Корзина <span id="basket_total_amount"></span><span id="basket_total_nmb">
+                        {% if products_total_nmb %}
+                            ({{ products_total_nmb }})
+                        {% else %}
+                            (0)
+                        {% endif %}
+                    </span></a>
+                    <div class="basket-items hidden">
+                        <ul class="">
+                            {% for product_in_basket in products_in_basket %}
+                                <li>
+                                    {{ product_in_basket.product.name }} {{ product_in_basket.nmb }} шт.
+                                    по {{ product_in_basket.price_per_item }} грн.
+                                    <a class="delete-item" href="" data-product_id="{{ product_in_basket.id }}">x</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="{% url 'checkout'  %}">
+                                    Оформить заказ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+                </ul>
+
+            <!-- End Atribute Navigation -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+</header>
+<!-- End Main Top -->

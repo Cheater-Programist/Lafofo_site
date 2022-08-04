@@ -1,0 +1,25 @@
+<form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.title }}
+        </div>
+        <div class="mb-3">
+            {{ form.description }}
+        </div>
+    <div class="mb-3">
+            {{ form.user }}
+        </div>
+    <div class="mb-3">
+            {{ form.price }}
+        </div>
+    <div class="mb-3">
+            {{ form.quantity }}
+        </div>
+    <div class="mb-3">
+            {{ form.category }}
+        </div>
+    <div class="mb-3">
+            {{ form.image }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
