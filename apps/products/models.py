@@ -14,7 +14,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name="Пользователь", related_name='product_user')
     image = models.ImageField(upload_to='product/', verbose_name='Картинка', blank=True, null=True)
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
-    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    price = models.DecimalField(max_digits=10, decimal_places=0, default=0)
     quantity = models.PositiveIntegerField(default=1, verbose_name='Количество')
     is_stock = models.BooleanField(default=True, db_index=True)
     slug = models.SlugField(blank=True, unique=True)

@@ -1,3 +1,6 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.urls.base import reverse_lazy
 from apps.categories.models import Category
 from apps.categories.forms import CategoryForm
